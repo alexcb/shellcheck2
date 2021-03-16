@@ -2,9 +2,9 @@ name: Build ShellCheck
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   test-darwin:
@@ -16,6 +16,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Download released earthly
         run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - name: pre docker login1
+        run: echo "${{ secrets.DOCKERHUB_USERNAME }}" | base64
+      - name: pre docker login2
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | sha1sum
       - name: docker login
         run: docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password "${{ secrets.DOCKERHUB_TOKEN }}"
       - name: build and test shellcheck for darwin
