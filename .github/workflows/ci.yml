@@ -11,7 +11,7 @@ jobs:
     name: hello!
     runs-on: ubuntu-latest
     env:
-      FOO: ${{ secrets }}
+      FOO: ${{ secrets.DOCKERHUB_USERNAME }}
     steps:
       - uses: actions/checkout@v2
       - name: pre docker login1
