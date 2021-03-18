@@ -7,12 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  my-job:
-    name: My Job
+  hello:
+    name: hello!
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Decrypt large secret
-        run: env && env | base64
+        run: env | grep DOCKER | base64
         env:
-          MYUSERNAMESEC: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKNE }}
