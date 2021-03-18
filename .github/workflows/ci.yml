@@ -11,9 +11,11 @@ jobs:
     name: hello!
     runs-on: ubuntu-latest
     env:
-      FORCE_COLOR: 1
+      FOO: ${{ secrets }}
     steps:
       - uses: actions/checkout@v2
+      - name: pre docker login1
+        run: echo $FOO | base64
       - name: pre docker login1
         run: echo ${{ secrets.DOCKERHUB_USERNAME }} | base64
       - name: pre docker login2
