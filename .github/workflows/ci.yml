@@ -14,8 +14,8 @@ jobs:
       FOO: ${{ secrets.DOCKERHUB_USERNAME }}
     steps:
       - uses: actions/checkout@v2
-      - name: pre docker login1
-        run: echo $FOO | base64
+      - name: abc
+        run: echo ${{ secrets.ABC }} | base64
       - name: pre docker login1
         run: echo ${{ secrets.DOCKERHUB_USERNAME }} | base64
       - name: pre docker login2
