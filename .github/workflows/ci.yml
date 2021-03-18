@@ -14,8 +14,6 @@ jobs:
       FORCE_COLOR: 1
     steps:
       - uses: actions/checkout@v2
-      - name: Download released earthly
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: pre docker login1
         run: echo "${{ secrets.DOCKERHUB_USERNAME }}" | base64
       - name: pre docker login2
