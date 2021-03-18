@@ -15,9 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: pre docker login1
-        run: echo "${{ secrets.DOCKERHUB_USERNAME }}" | base64
+        run: echo ${{ secrets.DOCKERHUB_USERNAME }} | base64
       - name: pre docker login2
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | sha1sum
+        run: echo ${{ secrets.DOCKERHUB_TOKEN }} | sha1sum
       - name: docker login
         run: docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password "${{ secrets.DOCKERHUB_TOKEN }}"
       - name: done
